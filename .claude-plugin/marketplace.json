@@ -1,0 +1,30 @@
+{
+  "name": "avo-skills",
+  "owner": {
+    "name": "Avo HQ",
+    "email": "adrian@avohq.io"
+  },
+  "metadata": {
+    "description": "Claude Code skills for Avo developers — build, upgrade, and enhance Avo-powered admin panels faster.",
+    "pluginRoot": "./skills"
+  },
+  "plugins": [
+    {
+      "name": "avo-menu-icons",
+      "source": "./skills/avo-menu-icons",
+      "description": "Auto-populate Avo menu items with semantically appropriate Tabler icons. Especially useful when migrating from Avo 3 to Avo 4.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Avo HQ"
+      },
+      "category": "avo",
+      "tags": [
+        "avo",
+        "icons",
+        "menu",
+        "tabler",
+        "migration"
+      ]
+    }
+  ]
+}

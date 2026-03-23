@@ -1,5 +1,4 @@
 ---
-name: avo-menu-icons
 description: Add icons to Avo menu items in config/initializers/avo.rb. Use when the user wants to populate icons for sidebar sections, groups, resources, links, and dashboards. Especially useful when migrating from Avo 3 to Avo 4.
 disable-model-invocation: true
 allowed-tools: Read, Edit, Glob
@@ -7,7 +6,7 @@ allowed-tools: Read, Edit, Glob
 
 # Add Icons to Avo Menu Items
 
-!`ruby ${CLAUDE_SKILL_DIR}/scripts/fetch_icons.rb`
+!`ruby ${CLAUDE_PLUGIN_ROOT}/scripts/fetch_icons.rb`
 
 The two lines above list every available Tabler icon name, grouped by style. To use an icon, prefix the name with `tabler/outline/` or `tabler/filled/` — e.g. `icon: "tabler/outline/users"`. Only use names that appear in the lists above.
 
