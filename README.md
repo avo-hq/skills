@@ -17,7 +17,7 @@ npx skills add avo-hq/skills
 To install a specific skill:
 
 ```bash
-npx skills add avo-hq/skills/avo-menu-icons
+npx skills add avo-hq/avo-menu-icons
 ```
 
 ## Structure
