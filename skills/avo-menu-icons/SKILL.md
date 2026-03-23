@@ -1,7 +1,6 @@
 ---
 name: avo-menu-icons
 description: Add icons to Avo menu items in config/initializers/avo.rb. Use when the user wants to populate icons for sidebar sections, groups, resources, links, and dashboards. Especially useful when migrating from Avo 3 to Avo 4.
-disable-model-invocation: true
 allowed-tools: Read, Edit, Glob
 ---
 
