@@ -6,7 +6,7 @@ allowed-tools: Read, Edit, Glob
 
 # Add Icons to Avo Menu Items
 
-!`ruby ${CLAUDE_PLUGIN_ROOT}/scripts/fetch_icons.rb`
+!`ruby scripts/fetch_icons.rb`
 
 The two lines above list every available Tabler icon name, grouped by style. To use an icon, prefix the name with `tabler/outline/` or `tabler/filled/` — e.g. `icon: "tabler/outline/users"`. Only use names that appear in the lists above.
 
