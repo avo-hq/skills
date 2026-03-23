@@ -6,15 +6,45 @@ allowed-tools: Read, Edit, Glob
 
 # Add Icons to Avo Menu Items
 
-!`ruby scripts/fetch_icons.rb`
+```bash
+ruby ./scripts/fetch_icons.rb
+```
 
-The two lines above list every available Tabler icon name, grouped by style. To use an icon, prefix the name with `tabler/outline/` or `tabler/filled/` — e.g. `icon: "tabler/outline/users"`. Only use names that appear in the lists above.
+Before doing anything, fetch the available Tabler icon names grouped by style by running the command above.
+That will output the available icons in a file called `icons-cache.json` in the same directory as the script with the available icons grouped by style (outline and filled).
+To use an icon, prefix the name with `tabler/outline/` or `tabler/filled/` — e.g. `icon: "tabler/outline/users"`.
+Only use names that appear in the `icons-cache.json` file.
 
-## Step 1: Read the Avo menu configuration
+---
+
+## Determine the approach
+
+There are two ways to add icons in Avo. Identify which one to use:
+
+### Approach A — Initializer menu DSL
+
+Use this when `config/initializers/avo.rb` contains a `config.main_menu` or `config.profile_menu` block. Icons are added inline to the DSL calls inside those blocks.
+
+### Approach B — Resource files
+
+Use this when the initializer has **no** `config.main_menu` / `config.profile_menu` block, meaning Avo auto-generates the sidebar from the registered resources. Icons are added via `self.icon` inside each resource class.
+
+**Decision rule:**
+
+1. If the user explicitly says which approach they want, use that.
+2. Otherwise, read `config/initializers/avo.rb`:
+   - If it contains `config.main_menu` or `config.profile_menu` → use **Approach A**.
+   - If neither block is present → use **Approach B**.
+
+---
+
+## Approach A — Add icons in the initializer
+
+### Step 1: Read the Avo menu configuration
 
 Find and read the Avo initializer — usually `config/initializers/avo.rb`. Locate the `config.main_menu` block and `config.profile_menu` if present.
 
-## Step 2: Identify items without icons
+### Step 2: Identify items without icons
 
 For each DSL call inside the menu blocks, check whether it already has an `icon:` argument:
 
@@ -26,9 +56,9 @@ For each DSL call inside the menu blocks, check whether it already has an `icon:
 
 Collect every call that is missing `icon:`.
 
-## Step 3: Choose icons
+### Step 3: Choose icons
 
-For each item without an icon, find the best-matching name from the outline list above. Prefer outline icons; only use filled when it clearly fits better.
+For each item without an icon, find the best-matching name from the outline list. Prefer outline icons; only use filled when it clearly fits better.
 
 **Matching strategy — try in order:**
 
@@ -60,9 +90,9 @@ For each item without an icon, find the best-matching name from the outline list
 
 3. **No match** — if nothing fits well, skip the item. Never force a generic placeholder.
 
-Always verify the chosen name exists in the injected list before using it.
+Always verify the chosen name exists in the icons list before using it.
 
-## Step 4: Apply the changes
+### Step 4: Apply the changes
 
 Edit the initializer, adding `icon: "tabler/outline/{name}"` (or `tabler/filled/{name}`) to each matched item:
 
@@ -71,10 +101,51 @@ Edit the initializer, adding `icon: "tabler/outline/{name}"` (or `tabler/filled/
 - Do not touch anything outside the menu blocks.
 - Leave existing `icon:` values unchanged.
 
-## Step 5: Report
+### Step 5: Report
 
 Tell the user:
 
 - Total icons added
 - For each item that got an icon: menu item name → icon chosen, with a one-word reason
 - Any items skipped because no good match was found
+
+---
+
+## Approach B — Add icons in resource files
+
+### Step 1: Find all resource files
+
+Use Glob to find all Avo resource files, typically at `app/avo/resources/**/*.rb` or `app/avo/resources/*.rb`.
+
+### Step 2: Identify resources without icons
+
+Read each resource file. Check whether the class body already contains `self.icon`. Collect every resource that is missing it.
+
+The resource name is the class name without the `Resource` suffix (e.g. `Avo::Resources::UserResource` → `User`).
+
+### Step 3: Choose icons
+
+Apply the same matching strategy from Approach A Step 3, using the resource name as the concept to match.
+
+### Step 4: Apply the changes
+
+For each matched resource, add `self.icon = "tabler/outline/{name}"` inside the class body, immediately after the class declaration line (or after any existing `self.model_class` / `self.label` declarations if present):
+
+```ruby
+class Avo::Resources::UserResource < Avo::BaseResource
+  self.icon = "tabler/outline/users"
+  # ... rest of resource
+end
+```
+
+- Preserve exact indentation and all existing content.
+- Do not add `self.icon` if one already exists.
+- One edit per file.
+
+### Step 5: Report
+
+Tell the user:
+
+- Total icons added
+- For each resource that got an icon: resource name → icon chosen, with a one-word reason
+- Any resources skipped because no good match was found
