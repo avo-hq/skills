@@ -48,35 +48,6 @@ Add to your project's `.claude/settings.json` so teammates are prompted automati
 }
 ```
 
-## Icon cache (avo-menu-icons)
-
-The `avo-menu-icons` plugin fetches Tabler icon names from GitHub and caches them locally. A pre-built cache is included in the repository. To refresh it:
-
-```bash
-ruby skills/avo-menu-icons/scripts/fetch_icons.rb --force
-# Optional: provide a GitHub token to avoid rate limits
-ruby skills/avo-menu-icons/scripts/fetch_icons.rb --force --token ghp_yourtoken
-```
-
-## Repository structure
-
-```
-.claude-plugin/
-  marketplace.json          ← marketplace catalog
-skills/
-  avo-menu-icons/
-    SKILL.md                ← the skill prompt
-    scripts/
-      fetch_icons.rb        ← fetches Tabler icon names from GitHub
-    icons-cache.json        ← pre-built icon cache
-```
-
-## Roadmap
-
-| Plugin           | Status   | Description                                     |
-| ---------------- | -------- | ----------------------------------------------- |
-| `avo-menu-icons` | ✅ Ready | Add icons to all menu items (v3 → v4 migration) |
-
 ## Contributing
 
-Each skill lives in `skills/{slug}/SKILL.md`. Run `/create-skill` inside this repo to scaffold a new one.
+Each plugin lives in `plugins/{slug}/`. Run `/create-skill` inside this repo to scaffold a new one.
