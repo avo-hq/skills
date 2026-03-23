@@ -1,4 +1,5 @@
 ---
+name: avo-menu-icons
 description: Add icons to Avo menu items in config/initializers/avo.rb. Use when the user wants to populate icons for sidebar sections, groups, resources, links, and dashboards. Especially useful when migrating from Avo 3 to Avo 4.
 disable-model-invocation: true
 allowed-tools: Read, Edit, Glob
@@ -35,28 +36,28 @@ For each item without an icon, find the best-matching name from the outline list
 1. **Exact match** — the item name or a keyword from it appears verbatim in the list (e.g. `users` section → find `users`).
 2. **Semantic match** — the concept maps to a well-known icon. Common hints:
 
-   | Concept | Try these names |
-   |---------|-----------------|
-   | Users / People / Members | `users`, `user`, `user-circle` |
-   | Posts / Articles / Blog | `article`, `news`, `writing` |
-   | Orders / Purchases | `shopping-cart`, `receipt`, `cash-register` |
-   | Products / Items / Catalog | `package`, `box`, `tag` |
-   | Settings / Config | `settings`, `adjustments`, `sliders` |
-   | Reports / Analytics | `chart-bar`, `chart-line`, `report-analytics` |
-   | Dashboard / Overview | `layout-dashboard`, `dashboard`, `home` |
-   | Comments / Reviews | `message`, `message-circle`, `star` |
-   | Teams / Organizations | `users-group`, `building`, `hierarchy` |
-   | Roles / Permissions | `shield-lock`, `lock`, `key` |
-   | Media / Files / Uploads | `photo`, `file`, `paperclip` |
-   | Tags / Labels / Categories | `tag`, `tags`, `bookmark` |
-   | Email / Notifications | `mail`, `bell`, `send` |
-   | Calendar / Events | `calendar`, `calendar-event`, `clock` |
-   | Invoices / Billing | `receipt`, `credit-card`, `currency-dollar` |
-   | Geography / Locations | `map-pin`, `map`, `globe` |
-   | Tools / Utilities | `tool`, `tools`, `hammer` |
-   | External links | `external-link`, `link` |
-   | Sign out / Logout | `logout`, `door-exit` |
-   | Profile / Account | `user-circle`, `id-badge` |
+   | Concept                    | Try these names                               |
+   | -------------------------- | --------------------------------------------- |
+   | Users / People / Members   | `users`, `user`, `user-circle`                |
+   | Posts / Articles / Blog    | `article`, `news`, `writing`                  |
+   | Orders / Purchases         | `shopping-cart`, `receipt`, `cash-register`   |
+   | Products / Items / Catalog | `package`, `box`, `tag`                       |
+   | Settings / Config          | `settings`, `adjustments`, `sliders`          |
+   | Reports / Analytics        | `chart-bar`, `chart-line`, `report-analytics` |
+   | Dashboard / Overview       | `layout-dashboard`, `dashboard`, `home`       |
+   | Comments / Reviews         | `message`, `message-circle`, `star`           |
+   | Teams / Organizations      | `users-group`, `building`, `hierarchy`        |
+   | Roles / Permissions        | `shield-lock`, `lock`, `key`                  |
+   | Media / Files / Uploads    | `photo`, `file`, `paperclip`                  |
+   | Tags / Labels / Categories | `tag`, `tags`, `bookmark`                     |
+   | Email / Notifications      | `mail`, `bell`, `send`                        |
+   | Calendar / Events          | `calendar`, `calendar-event`, `clock`         |
+   | Invoices / Billing         | `receipt`, `credit-card`, `currency-dollar`   |
+   | Geography / Locations      | `map-pin`, `map`, `globe`                     |
+   | Tools / Utilities          | `tool`, `tools`, `hammer`                     |
+   | External links             | `external-link`, `link`                       |
+   | Sign out / Logout          | `logout`, `door-exit`                         |
+   | Profile / Account          | `user-circle`, `id-badge`                     |
 
 3. **No match** — if nothing fits well, skip the item. Never force a generic placeholder.
 
@@ -74,6 +75,7 @@ Edit the initializer, adding `icon: "tabler/outline/{name}"` (or `tabler/filled/
 ## Step 5: Report
 
 Tell the user:
+
 - Total icons added
 - For each item that got an icon: menu item name → icon chosen, with a one-word reason
 - Any items skipped because no good match was found
