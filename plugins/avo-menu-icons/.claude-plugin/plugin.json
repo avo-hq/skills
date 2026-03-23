@@ -1,9 +1,0 @@
-{
-  "name": "avo-menu-icons",
-  "description": "Auto-populate Avo menu items with semantically appropriate Tabler icons. Especially useful when migrating from Avo 3 to Avo 4.",
-  "version": "1.0.0",
-  "author": {
-    "name": "Avo HQ",
-    "email": "adrian@avohq.io"
-  }
-}
